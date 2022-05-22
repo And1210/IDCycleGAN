@@ -1,0 +1,239 @@
+Reading config file...
+Initializing dataset...
+dataset [CARLADataset] was created
+The number of training samples = 1000
+dataset [CARLADataset] was created
+The number of validation samples = 1000
+dataset [PedestronDataset] was created
+The number of conversion samples = 500
+Initializing model...
+initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+model [IDCycleGANModel] was created
+Saving new best model at the end of epoch 0
+Saving latest model at the end of epoch 0
+End of epoch 0 / 100 	 Time Taken: 1606.5098371505737 sec
+Generator Loss: 3844.1664, Discriminator Loss: 1286.4466
+learning rate = 0.0002000
+Saving new best model at the end of epoch 1
+Saving latest model at the end of epoch 1
+End of epoch 1 / 100 	 Time Taken: 1603.3352534770966 sec
+Generator Loss: 3053.6426, Discriminator Loss: 696.8782
+learning rate = 0.0002000
+Saving new best model at the end of epoch 2
+Saving latest model at the end of epoch 2
+End of epoch 2 / 100 	 Time Taken: 1605.4282593727112 sec
+Generator Loss: 3037.8569, Discriminator Loss: 663.4459
+learning rate = 0.0002000
+Saving new best model at the end of epoch 3
+Saving latest model at the end of epoch 3
+End of epoch 3 / 100 	 Time Taken: 1601.9654116630554 sec
+Generator Loss: 2985.5242, Discriminator Loss: 650.5651
+learning rate = 0.0002000
+Saving new best model at the end of epoch 4
+Saving latest model at the end of epoch 4
+End of epoch 4 / 100 	 Time Taken: 1604.7320914268494 sec
+Generator Loss: 2834.5705, Discriminator Loss: 657.3494
+learning rate = 0.0002000
+Saving new best model at the end of epoch 5
+Saving latest model at the end of epoch 5
+End of epoch 5 / 100 	 Time Taken: 1605.585608959198 sec
+Generator Loss: 2706.6015, Discriminator Loss: 636.5180
+learning rate = 0.0002000
+Saving latest model at the end of epoch 6
+End of epoch 6 / 100 	 Time Taken: 1601.0168199539185 sec
+Generator Loss: 2788.3571, Discriminator Loss: 574.7869
+learning rate = 0.0002000
+Saving new best model at the end of epoch 7
+Saving latest model at the end of epoch 7
+End of epoch 7 / 100 	 Time Taken: 1602.9223635196686 sec
+Generator Loss: 2499.8513, Discriminator Loss: 594.0896
+learning rate = 0.0002000
+Saving latest model at the end of epoch 8
+End of epoch 8 / 100 	 Time Taken: 1598.894826412201 sec
+Generator Loss: 2566.8926, Discriminator Loss: 567.8838
+learning rate = 0.0002000
+Saving new best model at the end of epoch 9
+Saving latest model at the end of epoch 9
+End of epoch 9 / 100 	 Time Taken: 1604.9066665172577 sec
+Generator Loss: 2343.3303, Discriminator Loss: 594.3067
+learning rate = 0.0000600
+Saving new best model at the end of epoch 10
+Saving latest model at the end of epoch 10
+End of epoch 10 / 100 	 Time Taken: 1606.1111760139465 sec
+Generator Loss: 1933.8693, Discriminator Loss: 480.5772
+learning rate = 0.0000600
+Saving new best model at the end of epoch 11
+Saving latest model at the end of epoch 11
+End of epoch 11 / 100 	 Time Taken: 1606.4425327777863 sec
+Generator Loss: 1856.3093, Discriminator Loss: 503.9977
+learning rate = 0.0000600
+Saving new best model at the end of epoch 12
+Saving latest model at the end of epoch 12
+End of epoch 12 / 100 	 Time Taken: 1605.6073265075684 sec
+Generator Loss: 1853.1505, Discriminator Loss: 506.2852
+learning rate = 0.0000600
+Saving latest model at the end of epoch 13
+End of epoch 13 / 100 	 Time Taken: 1604.2154715061188 sec
+Generator Loss: 1891.6837, Discriminator Loss: 503.1567
+learning rate = 0.0000600
+Saving new best model at the end of epoch 14
+Saving latest model at the end of epoch 14
+End of epoch 14 / 100 	 Time Taken: 1603.397804737091 sec
+Generator Loss: 1854.0818, Discriminator Loss: 498.7156
+learning rate = 0.0000600
+Saving latest model at the end of epoch 15
+End of epoch 15 / 100 	 Time Taken: 1602.8745033740997 sec
+Generator Loss: 1873.3275, Discriminator Loss: 498.7884
+learning rate = 0.0000600
+Saving new best model at the end of epoch 16
+Saving latest model at the end of epoch 16
+End of epoch 16 / 100 	 Time Taken: 1605.539895772934 sec
+Generator Loss: 1819.5887, Discriminator Loss: 500.7881
+learning rate = 0.0000600
+Saving new best model at the end of epoch 17
+Saving latest model at the end of epoch 17
+End of epoch 17 / 100 	 Time Taken: 1605.965683221817 sec
+Generator Loss: 1801.6656, Discriminator Loss: 517.2904
+learning rate = 0.0000600
+Saving new best model at the end of epoch 18
+Saving latest model at the end of epoch 18
+End of epoch 18 / 100 	 Time Taken: 1606.8749380111694 sec
+Generator Loss: 1794.4640, Discriminator Loss: 505.8672
+learning rate = 0.0000600
+Saving new best model at the end of epoch 19
+Saving latest model at the end of epoch 19
+End of epoch 19 / 100 	 Time Taken: 1606.374798297882 sec
+Generator Loss: 1794.7297, Discriminator Loss: 504.6173
+learning rate = 0.0000180
+Saving new best model at the end of epoch 20
+Saving latest model at the end of epoch 20
+End of epoch 20 / 100 	 Time Taken: 1607.1277697086334 sec
+Generator Loss: 1597.5253, Discriminator Loss: 501.5931
+learning rate = 0.0000180
+Saving new best model at the end of epoch 21
+Saving latest model at the end of epoch 21
+End of epoch 21 / 100 	 Time Taken: 1606.6073505878448 sec
+Generator Loss: 1581.0719, Discriminator Loss: 510.5965
+learning rate = 0.0000180
+Saving new best model at the end of epoch 22
+Saving latest model at the end of epoch 22
+End of epoch 22 / 100 	 Time Taken: 1604.3536880016327 sec
+Generator Loss: 1570.9472, Discriminator Loss: 511.0409
+learning rate = 0.0000180
+Saving new best model at the end of epoch 23
+Saving latest model at the end of epoch 23
+End of epoch 23 / 100 	 Time Taken: 1604.3546414375305 sec
+Generator Loss: 1516.5533, Discriminator Loss: 514.8540
+learning rate = 0.0000180
+Saving latest model at the end of epoch 24
+End of epoch 24 / 100 	 Time Taken: 1602.151159286499 sec
+Generator Loss: 1537.4345, Discriminator Loss: 511.8768
+learning rate = 0.0000180
+Saving latest model at the end of epoch 25
+End of epoch 25 / 100 	 Time Taken: 1602.0537140369415 sec
+Generator Loss: 1520.8235, Discriminator Loss: 517.3527
+learning rate = 0.0000180
+Saving new best model at the end of epoch 26
+Saving latest model at the end of epoch 26
+End of epoch 26 / 100 	 Time Taken: 1605.4076673984528 sec
+Generator Loss: 1481.4835, Discriminator Loss: 515.2073
+learning rate = 0.0000180
+Saving new best model at the end of epoch 27
+Saving latest model at the end of epoch 27
+End of epoch 27 / 100 	 Time Taken: 1609.069052696228 sec
+Generator Loss: 1472.2184, Discriminator Loss: 512.3613
+learning rate = 0.0000180
+Saving latest model at the end of epoch 28
+End of epoch 28 / 100 	 Time Taken: 1600.479033946991 sec
+Generator Loss: 1489.7774, Discriminator Loss: 513.8671
+learning rate = 0.0000180
+Saving latest model at the end of epoch 29
+End of epoch 29 / 100 	 Time Taken: 1599.5754959583282 sec
+Generator Loss: 1491.3228, Discriminator Loss: 509.1387
+learning rate = 0.0000054
+Saving new best model at the end of epoch 30
+Saving latest model at the end of epoch 30
+End of epoch 30 / 100 	 Time Taken: 1603.2531116008759 sec
+Generator Loss: 1413.2170, Discriminator Loss: 512.8092
+learning rate = 0.0000054
+Saving new best model at the end of epoch 31
+Saving latest model at the end of epoch 31
+End of epoch 31 / 100 	 Time Taken: 1606.688217163086 sec
+Generator Loss: 1377.8458, Discriminator Loss: 515.5901
+learning rate = 0.0000054
+Saving latest model at the end of epoch 32
+End of epoch 32 / 100 	 Time Taken: 1603.0969512462616 sec
+Generator Loss: 1382.7533, Discriminator Loss: 514.9157
+learning rate = 0.0000054
+Saving new best model at the end of epoch 33
+Saving latest model at the end of epoch 33
+End of epoch 33 / 100 	 Time Taken: 1603.2987401485443 sec
+Generator Loss: 1370.0361, Discriminator Loss: 516.3640
+learning rate = 0.0000054
+Saving new best model at the end of epoch 34
+Saving latest model at the end of epoch 34
+End of epoch 34 / 100 	 Time Taken: 1608.526685476303 sec
+Generator Loss: 1359.6629, Discriminator Loss: 519.5064
+learning rate = 0.0000054
+Saving new best model at the end of epoch 35
+Saving latest model at the end of epoch 35
+End of epoch 35 / 100 	 Time Taken: 1603.1130113601685 sec
+Generator Loss: 1357.1522, Discriminator Loss: 519.1424
+learning rate = 0.0000054
+Saving new best model at the end of epoch 36
+Saving latest model at the end of epoch 36
+End of epoch 36 / 100 	 Time Taken: 1607.1406636238098 sec
+Generator Loss: 1344.0619, Discriminator Loss: 517.6112
+learning rate = 0.0000054
+Saving latest model at the end of epoch 37
+End of epoch 37 / 100 	 Time Taken: 1603.5701832771301 sec
+Generator Loss: 1353.5680, Discriminator Loss: 513.1136
+learning rate = 0.0000054
+Saving latest model at the end of epoch 38
+End of epoch 38 / 100 	 Time Taken: 1602.1964955329895 sec
+Generator Loss: 1356.4337, Discriminator Loss: 510.9736
+learning rate = 0.0000054
+Saving new best model at the end of epoch 39
+Saving latest model at the end of epoch 39
+End of epoch 39 / 100 	 Time Taken: 1605.9749727249146 sec
+Generator Loss: 1335.6540, Discriminator Loss: 515.2884
+learning rate = 0.0000016
+Saving new best model at the end of epoch 40
+Saving latest model at the end of epoch 40
+End of epoch 40 / 100 	 Time Taken: 1602.874465227127 sec
+Generator Loss: 1335.4065, Discriminator Loss: 513.2276
+learning rate = 0.0000016
+Saving new best model at the end of epoch 41
+Saving latest model at the end of epoch 41
+End of epoch 41 / 100 	 Time Taken: 1607.018655538559 sec
+Generator Loss: 1327.3294, Discriminator Loss: 513.5477
+learning rate = 0.0000016
+Saving new best model at the end of epoch 42
+Saving latest model at the end of epoch 42
+End of epoch 42 / 100 	 Time Taken: 1605.9600200653076 sec
+Generator Loss: 1320.0939, Discriminator Loss: 511.1827
+learning rate = 0.0000016
+Saving new best model at the end of epoch 43
+Saving latest model at the end of epoch 43
+End of epoch 43 / 100 	 Time Taken: 1607.3428170681 sec
+Generator Loss: 1299.1455, Discriminator Loss: 511.0339
+learning rate = 0.0000016
+Saving latest model at the end of epoch 44
+End of epoch 44 / 100 	 Time Taken: 1601.3684904575348 sec
+Generator Loss: 1315.5795, Discriminator Loss: 512.5231
+learning rate = 0.0000016
+Saving latest model at the end of epoch 45
+End of epoch 45 / 100 	 Time Taken: 1600.6917717456818 sec
+Generator Loss: 1306.7668, Discriminator Loss: 516.5097
+learning rate = 0.0000016
+Saving latest model at the end of epoch 46
+End of epoch 46 / 100 	 Time Taken: 1601.546469449997 sec
+Generator Loss: 1303.9308, Discriminator Loss: 516.3393
+learning rate = 0.0000016
+slurmstepd-sasquatch: error: *** JOB 11863 ON sasquatch CANCELLED AT 2022-05-22T12:41:13 ***

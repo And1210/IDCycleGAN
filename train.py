@@ -44,9 +44,6 @@ def train(config_file, export=True):
     model = create_model(configuration['model_params'])
     model.setup()
 
-    print('Initializing visualization...')
-    visualizer = Visualizer(configuration['visualization_params'])   # create a visualizer that displays images and plots
-
     if (type(configuration['model_params']['load_checkpoint']) == str):
         starting_epoch = configuration['model_params']['scheduler_epoch'] + 1
     else:
@@ -75,7 +72,6 @@ def train(config_file, export=True):
         #On every epoch, loop through all data in train_dataset
         for i, data in enumerate(train_dataset):  # inner loop within one epoch
             iter_start_time = time.time()
-            visualizer.reset()
             cur_data = data
 
             model.set_input(cur_data)         # unpack data from dataset and apply preprocessing
@@ -95,13 +91,10 @@ def train(config_file, export=True):
                 t_data = iter_start_time - iter_data_time
                 losses = model.get_current_losses()
                 t_comp = (time.time() - iter_start_time) / train_batch_size
-                visualizer.print_current_losses(epoch, epoch_iter, losses, t_comp, t_data)
                 # if opt.display_id > 0:
-                visualizer.plot_current_losses(epoch, float(i*train_batch_size) / train_iterations, losses)
 
                 save_result = total_iters % 500 == 0
                 model.compute_visuals()
-                visualizer.display_current_results(model.get_current_visuals(), epoch, save_result)
 
             total_iters += train_batch_size
             epoch_iter += train_batch_size

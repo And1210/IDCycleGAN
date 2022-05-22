@@ -1,23 +1,23 @@
 {
     "train_dataset_params": {
         "dataset_name": "CARLA",
-        "dataset_path": "/drive/datasets/CityPersons2C6/train",
+        "dataset_path": "/home/16amf8/data/datasets/CityPersons2C6/train",
         "sim_data_folder": "CityPersons",
         "real_data_folder": "CARLA6",
         "stage": "train",
         "clip_num": 5000,
         "loader_params": {
-            "batch_size": 1,
+            "batch_size": 2,
             "shuffle": true,
             "num_workers": 1,
             "pin_memory": true
         },
-        "input_size": [128, 128],
-        "normalize_size": [1024, 512]
+        "input_size": [512, 512],
+        "normalize_size": [2048, 1024]
     },
     "val_dataset_params": {
         "dataset_name": "CARLA",
-        "dataset_path": "/drive/datasets/CityPersons2C6/train",
+        "dataset_path": "/home/16amf8/data/datasets/CityPersons2C6/train",
         "sim_data_folder": "CityPersons",
         "real_data_folder": "CARLA6",
         "stage": "val",
@@ -28,12 +28,12 @@
             "num_workers": 1,
             "pin_memory": true
         },
-        "input_size": [128, 128],
-        "normalize_size": [1024, 512]
+        "input_size": [512, 512],
+        "normalize_size": [2048, 1024]
     },
     "convert_dataset_params": {
         "dataset_name": "Pedestron",
-        "dataset_path": "/home/andrew/Grad/pedestrian_detection/Pedestron/datasets/CityPersons/leftImg8bit_trainvaltest/leftImg8bit",
+        "dataset_path": "/home/16amf8/data/datasets/CityPersons",
         "sim_data_folder": "val",
         "real_data_folder": "val",
         "stage": "val",
@@ -44,7 +44,7 @@
             "num_workers": 1,
             "pin_memory": true
         },
-        "input_size": [256, 256],
+        "input_size": [512, 512],
         "normalize_size": [2048, 1024]
     },
     "model_params": {

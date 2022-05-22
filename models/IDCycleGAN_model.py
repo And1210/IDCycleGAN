@@ -49,7 +49,7 @@ class IDCycleGANModel(BaseModel):
         BaseModel.__init__(self, opt)
         self.opt = opt
         # specify the training losses you want to print out. The training/test scripts will call <BaseModel.get_current_losses>
-        self.loss_names = ['D_A', 'D_B', 'D_C', 'G_A2C', 'G_C2A', 'G_B2C', 'G_C2B', 'idt_A', 'idt_B', 'cycle_A', 'cycle_B', 'recon_C_A', 'recon_C_B']
+        self.loss_names = ['D_A', 'D_B', 'D_C', 'G_A2C', 'G_C2A', 'G_B2C', 'G_C2B', 'idt_A', 'idt_B', 'cycle_A', 'cycle_B', 'cycle_C_A', 'cycle_C_B']
         #self.loss_names = ['D_A', 'G_A', 'cycle_A', 'idt_A', 'D_B', 'G_B', 'cycle_B', 'idt_B', 'gray_A', 'edge_A', 'gray_B', 'edge_B', 'feat_A2B', 'feat_B2A']
         # specify the images you want to save/display. The training/test scripts will call <BaseModel.get_current_visuals>
         visual_names_A = ['real_A', 'C_A', 'fake_B', 'fake_C_B', 'recon_A']
@@ -96,8 +96,12 @@ class IDCycleGANModel(BaseModel):
             self.fake_B_pool = ImagePool(opt['pool_size'])  # create image buffer to store previously generated images
             self.C_A_pool = ImagePool(opt['pool_size'])
             self.C_B_pool = ImagePool(opt['pool_size'])
+            self.recon_A_pool = ImagePool(opt['pool_size'])
+            self.recon_B_pool = ImagePool(opt['pool_size'])
             self.recon_C_A_pool = ImagePool(opt['pool_size'])
             self.recon_C_B_pool = ImagePool(opt['pool_size'])
+            self.fake_C_A_pool = ImagePool(opt['pool_size'])
+            self.fake_C_B_pool = ImagePool(opt['pool_size'])
             # define loss functions
             self.criterionGAN = networks.GANLoss(opt['gan_mode']).to(self.device)  # define GAN loss.
             self.criterionCycle = torch.nn.L1Loss()
@@ -161,18 +165,24 @@ class IDCycleGANModel(BaseModel):
         """Calculate GAN loss for discriminator D_A"""
         fake_A = self.fake_A_pool.query(self.fake_A)
         recon_C_A = self.recon_C_A_pool.query(self.recon_C_A)
-        self.loss_D_A = self.backward_D_basic(self.netD_A, self.real_A, fake_A) + self.backward_D_basic(self.netD_A, self.real_A, recon_C_A)
+        fake_C_A = self.fake_C_A_pool.query(self.fake_C_A)
+        self.loss_D_A = self.backward_D_basic(self.netD_A, self.real_A, fake_A) + self.backward_D_basic(self.netD_A, self.real_A, recon_C_A) + self.backward_D_basic(self.netD_A, self.real_A, fake_C_A)
 
     def backward_D_B(self):
         """Calculate GAN loss for discriminator D_B"""
         fake_B = self.fake_B_pool.query(self.fake_B)
-        recon_C_B = self.fake_B_pool.query(self.recon_C_B)
-        self.loss_D_B = self.backward_D_basic(self.netD_B, self.real_B, fake_B) + self.backward_D_basic(self.netD_B, self.real_B, recon_C_B)
+        recon_C_B = self.recon_B_pool.query(self.recon_C_B)
+        fake_C_B = self.fake_C_B_pool.query(self.fake_C_B)
+        self.loss_D_B = self.backward_D_basic(self.netD_B, self.real_B, fake_B) + self.backward_D_basic(self.netD_B, self.real_B, recon_C_B) + self.backward_D_basic(self.netD_B, self.real_B, fake_C_B)
 
     def backward_D_C(self):
         C_A = self.C_A_pool.query(self.C_A)
         C_B = self.C_B_pool.query(self.C_B)
-        self.loss_D_C = self.backward_D_basic(self.netD_C, C_A, self.real_A) + self.backward_D_basic(self.netD_C, C_B, self.real_B)
+        fake_C_A = self.fake_C_A_pool.query(self.fake_C_A)
+        fake_C_B = self.fake_C_B_pool.query(self.fake_C_B)
+        #real_A = self.real_A_pool.query(self.real_A)
+        #real_B = self.real_B_pool.query(self.real_B)
+        self.loss_D_C = self.backward_D_basic(self.netD_C, C_A, self.real_A) + self.backward_D_basic(self.netD_C, C_B, self.real_B) + self.backward_D_basic(self.netD_C, fake_C_A, self.real_A) + self.backward_D_basic(self.netD_C, fake_C_B, self.real_B)
 
     def backward_G(self):
         """Calculate the loss for generators G_A and G_B"""
@@ -194,24 +204,24 @@ class IDCycleGANModel(BaseModel):
         #['D_A', 'D_B', 'D_C', 'G_A2C', 'G_C2A', 'G_B2C', 'G_C2B', 'idt_A', 'idt_B', 'cycle_A', 'cycle_B']
 
         # GAN loss D_C(G_A2C(A))
-        self.loss_G_A2C = self.criterionGAN(self.netD_C(self.C_A), True) #THESE TWO COULD BE A PROBLEM
+        self.loss_G_A2C = self.criterionGAN(self.netD_C(self.C_A), False) + self.criterionGAN(self.netD_C(self.fake_C_A), False) #THESE TWO COULD BE A PROBLEM
         # GAN loss D_C(G_B2C(B))
-        self.loss_G_B2C = self.criterionGAN(self.netD_C(self.C_B), True)
+        self.loss_G_B2C = self.criterionGAN(self.netD_C(self.C_B), False) + self.criterionGAN(self.netD_C(self.fake_C_B), False)
         # GAN loss D_C(G_C2A(G_A2C(A)))
-        self.loss_G_C2A = self.criterionGAN(self.netD_A(self.recon_C_A), True)
+        self.loss_G_C2A = self.criterionGAN(self.netD_A(self.recon_C_A), True) + self.criterionGAN(self.netD_A(self.recon_A), True)
         # GAN loss D_C(G_C2B(G_B2C(B)))
-        self.loss_G_C2B = self.criterionGAN(self.netD_B(self.recon_C_B), True)
+        self.loss_G_C2B = self.criterionGAN(self.netD_B(self.recon_C_B), True) + self.criterionGAN(self.netD_B(self.recon_B), True)
         # Forward cycle loss || G_C2A(G_B2C(G_C2B(G_A2C(A)))) - A||
         self.loss_cycle_A = self.criterionCycle(self.recon_A, self.real_A) * lambda_A
         # Backward cycle loss || G_C2B(G_A2C(G_C2A(G_B2C(A)))) - B||
         self.loss_cycle_B = self.criterionCycle(self.recon_B, self.real_B) * lambda_B
 
-        self.loss_recon_C_A = self.criterionCycle(self.recon_C_A, self.real_A) * lambda_A
-        self.loss_recon_C_B = self.criterionCycle(self.recon_C_B, self.real_B) * lambda_B
+        self.loss_cycle_C_A = self.criterionCycle(self.recon_C_A, self.real_A) * lambda_A
+        self.loss_cycle_C_B = self.criterionCycle(self.recon_C_B, self.real_B) * lambda_B
 
         # combined loss and calculate gradients
         #self.loss_G = self.loss_G_A + self.loss_G_B + self.loss_cycle_A + self.loss_cycle_B + self.loss_idt_A + self.loss_idt_B + self.loss_gray_A + self.loss_edge_A + self.loss_gray_B + self.loss_edge_B
-        self.loss_G = self.loss_G_A2C + self.loss_G_B2C + self.loss_G_C2A + self.loss_G_C2B + self.loss_cycle_A + self.loss_cycle_B + self.loss_idt_A + self.loss_idt_B + self.loss_recon_C_A + self.loss_recon_C_B
+        self.loss_G = self.loss_G_A2C + self.loss_G_B2C + self.loss_G_C2A + self.loss_G_C2B + self.loss_cycle_A + self.loss_cycle_B + self.loss_idt_A + self.loss_idt_B + self.loss_cycle_C_A + self.loss_cycle_C_B
         self.loss_G.backward()
 
     def optimize_parameters(self):

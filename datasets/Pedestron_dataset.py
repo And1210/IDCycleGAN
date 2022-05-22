@@ -33,8 +33,8 @@ class PedestronDataset(BaseDataset):
 
         self.sim_img_paths = []
         for i in os.listdir(os.path.join(self.dataset_path, configuration["sim_data_folder"])):
-            for j in os.listdir(os.path.join(self.dataset_path, configuration["sim_data_folder"], i)):
-                self.sim_img_paths.append(os.path.join(self.dataset_path, configuration["sim_data_folder"], i, j))
+            #for j in os.listdir(os.path.join(self.dataset_path, configuration["sim_data_folder"], i)):
+            self.sim_img_paths.append(os.path.join(self.dataset_path, configuration["sim_data_folder"], i))#, j))
 
         #-----------------------------------------------------------------------
 
